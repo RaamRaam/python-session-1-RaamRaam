@@ -1,0 +1,62 @@
+python -m venv epai
+source epai/Scripts/activate
+
+source 
+pip install --upgrade pip
+pip install pytest
+
+pip freeze > requirements.txt
+pip install -r requirements.txt
+
+
+pytest -vv
+
+
+tough .gitignore
+git add .
+git status
+git commit -m 'intial commit'
+git push origin master
+
+git config --get remote.origin.url
+git remote show origin
+
+git init
+git config --global user.name RaamRaam
+git config --global user.email rm.ramanathan@gmail.com
+
+git remote rename origin tsairepo
+git remote add myrepo https://github.com/RaamRaam/python-session-1-RaamRaam.git
+git push myrepo master
+
+https://dev.to/web/list-of-all-git-commands-4m83
+
+git pull upstream master && git push myrepo master
+
+https://www.youtube.com/watch?v=l6fV09z5XHk&feature=youtu.be&ab_channel=ZohebAbai
+.github/workflows/ci.yml
+
+name: GitHub Classroom Workflow
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.6
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.6
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Test with pytest
+        run: pytest -vv
